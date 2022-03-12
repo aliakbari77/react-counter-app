@@ -11,11 +11,6 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-  handleIncrement = (e) => {
-    console.log("Increment Clicked.", e);
-    this.setState({ value: this.state.value + 1 });
-  };
-
   render() {
     console.log("props:", this.props);
 
@@ -24,8 +19,8 @@ class Counter extends Component {
         <div className="container">
           <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
           <button
-            onClick={(e) => {
-              this.handleIncrement(e);
+            onClick={() => {
+              this.props.onIncrement(this.props.counter);
             }}
             className="btn btn-secondary m-2"
           >
@@ -44,12 +39,12 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { value } = this.state;
+    const { value } = this.props.counter;
     return value === 0 ? "Zero" : value;
   }
 }
