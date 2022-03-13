@@ -6,14 +6,17 @@ class Counter extends Component {
     tags: ["tag1", "tag2", "tag3"],
   };
 
-  // constructor() {
-  //   super();
-  //   this.handleIncrement = this.handleIncrement.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    console.log("Counter - constructor");
+  }
+
+  componentDidMount() {
+    console.log("Counter - componentDicMount");
+  }
 
   render() {
-    console.log("props:", this.props);
-
+    console.log("Counter - render");
     return (
       <React.Fragment>
         <div className="container">
