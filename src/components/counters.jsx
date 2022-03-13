@@ -2,17 +2,10 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
-  constructor() {
-    super();
-    console.log("Counters - constructor");
-  }
-
-  componentDidMount() {
-    console.log("Counters - componentDidMount");
-  }
   render() {
     console.log("Counters - render");
-    const { onDelete, onIncrement, counters, onReset } = this.props;
+    const { onDelete, onIncrement, counters, onReset, onDecrement } =
+      this.props;
     return (
       <React.Fragment>
         <button onClick={onReset} className="btn btn-primary m-2">
@@ -24,6 +17,7 @@ class Counters extends Component {
             counter={counter}
             onDelete={onDelete}
             onIncrement={onIncrement}
+            onDecrement={onDecrement}
           />
         ))}
       </React.Fragment>

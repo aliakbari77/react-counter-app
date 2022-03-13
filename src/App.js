@@ -27,15 +27,6 @@ class App extends Component {
     ],
   };
 
-  constructor() {
-    super();
-    console.log("App - Constructor");
-  }
-
-  componentDidMount() {
-    console.log("App - componentDidMount");
-  }
-
   handleDelete = (counter) => {
     const counters = this.state.counters.filter((c) => {
       return c.id !== counter.id;
@@ -49,6 +40,14 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
+    this.setState({ counters });
+  };
+
+  handleDecrement = (counter) => {
+    const counters = this.state.counters;
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
     this.setState({ counters });
   };
 
@@ -74,6 +73,7 @@ class App extends Component {
           onDelete={this.handleDelete}
           counters={this.state.counters}
           onReset={this.handleReset}
+          onDecrement={this.handleDecrement}
         />
       </React.Fragment>
     );
